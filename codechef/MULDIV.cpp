@@ -2,10 +2,10 @@
 //  																		
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
-//	National Institute of Technology , Calicut						
-//	problem link : 
-//	Concept : 
-//	Reference :	
+//	National Institute of Technology , Calicut							
+//	problem link :	http://www.codechef.com/NCC2014/problems/MULDIV													
+//	Concept :	Recurrence relation													
+//	Reference :	None									
 //																		
 /***********************************************************************/
 
@@ -72,10 +72,28 @@ inline void out(ll n)
 
 
 int main(){
-	int t;
+	ll t,n,m,k;
 	cin>>t;
 	while(t--){
-		
+		cin>>n>>k>>m;
+		ll temp_n = n;
+		ll count = 0;
+		ll div[1000000];
+		div[0]=n;
+		while(n%k == 0){
+			div[count]=n;
+			n/=k;
+			count++;
+		}
+		if(count == 0) {cout<<n<<endl; continue;}
+		ll rem = m%count;
+		ll quo = m/count;
+		if(quo%2 == 0){
+			cout<<div[rem]<<endl;
+		}
+		else{
+			cout<<div[count-rem]<<endl;
+		}
 	}
 	return 0;
 }

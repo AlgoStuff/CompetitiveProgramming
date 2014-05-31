@@ -2,10 +2,10 @@
 //  																		
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
-//	National Institute of Technology , Calicut						
-//	problem link : 
-//	Concept : 
-//	Reference :	
+//	National Institute of Technology , Calicut							
+//	problem link :	http://www.spoj.com/problems/TEST/													
+//	Concept :Brute Force														
+//	Reference :	 None												
 //																		
 /***********************************************************************/
 
@@ -72,10 +72,11 @@ inline void out(ll n)
 
 
 int main(){
-	int t;
-	cin>>t;
-	while(t--){
-		
+	while(1){
+		ll n;
+		cin>>n;
+		if(n==42) break;
+		else cout<<n<<endl;
 	}
 	return 0;
 }

@@ -2,16 +2,16 @@
 //  																		
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
-//	National Institute of Technology , Calicut						
-//	problem link : 
-//	Concept : 
-//	Reference :	
-//																		
+//	National Institute of Technology , Calicut							
+//	problem link : http://www.codechef.com/MAY14/problems/COMPILER		
+//	Concept : Simple Dynamic programming , Stack used					
+//	Reference : http://n00tc0d3r.blogspot.com/2013/04/longest-valid-parentheses.html
+//	
 /***********************************************************************/
-
-
+ 
+ 
 //header files
-
+ 
 #include<iostream>
 #include<string.h>
 #include<algorithm>
@@ -23,20 +23,19 @@
 #include<cmath>
 #include<set>
 #include<ctime>
-
+ 
 //typedefs
-
+ 
 typedef unsigned long long int ull;
 typedef long long int ll;
 typedef long int li;
-
-#define MOD7 1000000007
-#define MOD9 1000000009
+ 
+#define MOD 0
 #define x getchar()
 #define y putchar
-
+ 
 using namespace std;
-
+ 
 // Fast input
 inline void read(ll & n)
 {
@@ -69,13 +68,45 @@ inline void out(ll n)
 	while(ind--) y(ch[ind]);
 	y('\n');
 }
-
-
+ 
+ 
 int main(){
 	int t;
 	cin>>t;
 	while(t--){
+		stack <li> box;
+		string braces;
+		cin>>braces;
+		li latest = -1;
+		li res = 0;
+		li ans = 0;
+		li len = braces.length();
+		for(int i = 0 ; i < len ; i++){
+			if(braces[i] == '<') box.push(i);
+			else{
+				if (box.empty())
+				{
+					latest = i;
+					ans = res;
+					break;
+				}
+				else{
+					box.pop();
+					if (box.empty())
+					{
+						res = res > i-latest ? res:i-latest;
+						ans = res;
+					}
+					else{
+						res = res > box.top() ? res:i-box.top();
+					}
+				}
+			}
+		}
+		cout<<ans<<endl;
 		
-	}
+ 
+	}  
 	return 0;
 }
+ 

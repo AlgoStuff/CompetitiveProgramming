@@ -3,9 +3,9 @@
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
 //	National Institute of Technology , Calicut						
-//	problem link : 
-//	Concept : 
-//	Reference :	
+//	problem link :	http://www.spoj.com/problems/FCTRL/
+//	Concept :	De Polignac's formula
+//	Reference : http://en.wikipedia.org/wiki/De_Polignac%27s_formula
 //																		
 /***********************************************************************/
 
@@ -75,7 +75,15 @@ int main(){
 	int t;
 	cin>>t;
 	while(t--){
-		
+		ull n;
+		cin>>n;
+		int res=0;
+		ull five = 5;
+		while(n/five){
+			res+=(n/five);
+			five=five*5;
+		}
+	cout<<res<<endl;
 	}
 	return 0;
 }

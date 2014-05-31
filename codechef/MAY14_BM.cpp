@@ -2,10 +2,10 @@
 //  																		
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
-//	National Institute of Technology , Calicut						
-//	problem link : 
-//	Concept : 
-//	Reference :	
+//	National Institute of Technology , Calicut							
+//	problem link :	http://www.codechef.com/MAY14/problems/CHEFBM												
+//	Concept :	Logic														
+//	Reference :	None														
 //																		
 /***********************************************************************/
 
@@ -72,10 +72,6 @@ inline void out(ll n)
 
 
 int main(){
-	int t;
-	cin>>t;
-	while(t--){
-		
-	}
+	
 	return 0;
 }

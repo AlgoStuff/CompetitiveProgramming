@@ -3,9 +3,9 @@
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
 //	National Institute of Technology , Calicut						
-//	problem link : 
-//	Concept : 
-//	Reference :	
+//	problem link :	http://www.spoj.com/problems/FCTRL2/
+//	Concept : Big Integers , Array Based Multiplication 
+//	Reference :	None
 //																		
 /***********************************************************************/
 
@@ -69,13 +69,39 @@ inline void out(ll n)
 	while(ind--) y(ch[ind]);
 	y('\n');
 }
+ull res[101][1000];
+int pos[100]={0};
 
+void pre(){
+	memset(res,0,sizeof(res[0][0])*101*1001);
+	res[1][1000]=1;
+	pos[1] = 1000;
+	for(int i = 2;i<=100;i++){
+		int point = 1000;
+		ull carry = 0;
+		while(point>=pos[i-1]){
+			res[i][point] = (res[i-1][point]*i + carry)%10;
+			carry = (res[i-1][point]*i+ carry)/10;
+			point--;
+		}
+		while(carry){
+			res[i][point] = (carry)%10;
+			carry = (carry)/10;
+			point--;
+		}
+		pos[i] = point+1;
+	}
+}
 
 int main(){
 	int t;
 	cin>>t;
+	pre();
 	while(t--){
-		
+		int n;
+		cin>>n;
+		for(int i = pos[n];i <=1000;i++) cout<<res[n][i];
+			cout<<endl;
 	}
 	return 0;
 }

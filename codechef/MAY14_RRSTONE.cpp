@@ -2,10 +2,10 @@
 //  																		
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
-//	National Institute of Technology , Calicut						
-//	problem link : 
-//	Concept : 
-//	Reference :	
+//	National Institute of Technology , Calicut							
+//	problem link :	http://www.codechef.com/MAY14/problems/RRSTONE													
+//	Concept : Logic														
+//	Reference :	Pen and Paper													
 //																		
 /***********************************************************************/
 
@@ -69,13 +69,33 @@ inline void out(ll n)
 	while(ind--) y(ch[ind]);
 	y('\n');
 }
+li n,k;
 
-
+void print(ll aa[]){
+	for(int i = 0 ; i < n ; i++) cout<<aa[i]<<" ";
+}
 int main(){
-	int t;
-	cin>>t;
-	while(t--){
-		
+	ll max = -2000000001;
+	ll max1 = -2000000001;
+
+	cin>>n>>k;
+	ll a[n];
+	for(int i =  0 ; i < n;i++) {
+		cin>>a[i];
+		max = max < a[i] ? a[i] : max;
 	}
+	ll copy1[n];
+	ll copy2[n];
+	for(int i =  0 ; i < n;i++) {
+		copy1[i] = max - a[i];
+		max1 = max1 < copy1[i] ? copy1[i] : max1;
+	}
+	for(int i =  0 ; i < n;i++) {
+		copy2[i] = max1 - copy1[i];
+	}
+	if(k==0) print(a);
+	else if (k%2 == 1) print(copy1);
+	else print(copy2);
+	cout<<endl;
 	return 0;
 }
