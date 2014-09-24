@@ -2,10 +2,10 @@
 //  																		
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
-//	National Institute of Technology , Calicut							
-//	problem link :	http://www.spoj.com/problems/TEST/													
-//	Concept :Brute Force														
-//	Reference :	 None												
+//	National Institute of Technology , Calicut						
+//	problem link : http://www.codechef.com/JUNE14/problems/DIGJUMP 
+//	Concept : Logic
+//	Reference :	None
 //																		
 /***********************************************************************/
 
@@ -70,13 +70,48 @@ inline void out(ll n)
 	y('\n');
 }
 
-
-int main(){
-	while(1){
-		ll n;
-		cin>>n;
-		if(n==42) break;
-		else cout<<n<<endl;
+ull gcd(ull num , ull den){
+	if(num == 0) return 1;
+	while(num != den){
+		if(num > den) num = num - den;
+		else den = den - num;
 	}
+	return num;
+}
+
+
+int main() 
+{
+	string s;
+	int res[100001];
+	cin>>s;
+	int len = s.length();
+	int pos[10];
+	memset(pos,-1,size(pos));
+	l = s[0]-'0';
+	pos[l] = 0;
+	a[0] = 0;
+	for(int j = 1;j<len;j++)
+	{
+		l = s[j] - '0';
+		if(pos[l]!=-1) {
+			a[j] = min( a[j-1]+1 , a[pos[l]] + 1);
+			if((a[pos[l]]+1) > (a[j-1]+1))
+				pos[l] = j;
+		}
+		else a[j] = a[j-1]+1;
+		int p=j-1;
+		int q=j;
+		for(int p=j-1,q=j;p>=0 && q>=1;p--,q--)
+		{
+			if(a[p]>(a[q]+1))
+				a[p] = a[q]+1;
+			else
+				break;
+		}
+		if(pos[l] == -1)
+			pos[l] = j;
+	}
+	cout<<res<<a[size-1]<<endl;
 	return 0;
 }
