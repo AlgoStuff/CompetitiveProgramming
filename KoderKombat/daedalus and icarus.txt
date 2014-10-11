@@ -1,0 +1,28 @@
+Daedalus And Icarus
+___________________
+
+Daedalus is busy fashioning wings for his son Icarus, to escape the shores of Crete. Each feather used by Daedalus has an integer denoting its component material C[1..n]. 
+Feathers with prime integers are the strongest. 
+
+
+Now having the total number of feathers N and C[i], Daedalus decides to assess the strengths of various subparts (C[i..j]) of his design. But naughty Icarus has modified some feathers with
+some of his own. You have to tell Daedalus the largest prime number in a subpart. 
+
+
+Input
+______
+
+First line of input contains T, the number of test cases.Each test case has M+2 lines. First line is N and M , where M is the number of queries.The second line has N space separated integers. 
+After this M lines follow, each line having q , the type of query, and two integers a and b, space separated. q can be either be 1 or 0. If q is 1 then output the
+largest prime number in C[a..b]. If q is 0 , Icarus has changed c[a] with b.
+
+
+Output
+______
+For each query in the test case output , in a single line , the largest prime number in the subpart, if no prime number exists output -1.
+
+
+
+
+
+

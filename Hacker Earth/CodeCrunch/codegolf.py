@@ -1,0 +1,1 @@
+i=input;c=i();exec"if i()%3:c-=1\n"*c;print(c)
