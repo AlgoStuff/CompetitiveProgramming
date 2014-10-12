@@ -10,7 +10,7 @@ function compare($S1,$S2,$a,$b,$limit)
   if(abs($n-$m)>$limit)
     return 9999999;
   
-  $dist=array_fill(0,2,array_fill(0,$m+1,0)); $ok=1; $current=1;
+  $dist=array(array()); $ok=1; $current=1;
   for($i=1;$i<=$m;$i++)
   {	
 	  $dist[0][$i]=$i;
@@ -23,7 +23,7 @@ function compare($S1,$S2,$a,$b,$limit)
 		$dist[$current][$i-$limit-1]=9999999;
     for($j=max($i-$limit,1);$j<=min($i+$limit,$m);$j++)
     {
-        if(substr($S1,$i-1,1)==substr($S2,$j-1,1))
+        if(similar_text($S1[$i-1],$S2[$j-1]))
             $dist[$current][$j]=$dist[1-$current][$j-1];
         else
             $dist[$current][$j]=min($dist[1-$current][$j-1]+$b,$dist[1-$current][$j]+$a,$dist[$current][$j-1]+$a);
@@ -42,9 +42,6 @@ function compare($S1,$S2,$a,$b,$limit)
   }
   return $dist[1-$current][$m];
 }
-\
-
-
 $handle = fopen ("php://stdin","r");
 $t=fgets($handle);
 $c = 0;
