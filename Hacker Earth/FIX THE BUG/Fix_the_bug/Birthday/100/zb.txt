@@ -1,0 +1,11 @@
+New Year is coming in Tree Island! Your friend went to a special Island.In this island, as the name implies, there are n cities connected by n - 1 roads, and for any two distinct cities there always exists exactly one path between them. For every person(also that friend) in Tree Island, it takes exactly one minute to pass by exactly one road and so for your runner friend.
+
+There is a weird New Year friend tradition for friend in Tree Island, which is called "extreme run". This tradition can be done as follows.friend in need is a friend indeed! 
+
+Your friend which is a runner chooses two distinct cities a and b. For simplicity, let's denote the shortest path from city a to city b as p1 for friend , p2, ..., pl (here, p1 = a and pl = b holds). Then following happens to the friend:
+
+    firstly your friend starts at city a.
+    The friend runs from city a to b, following the shortest path from city a to city b.
+    When the friend arrives at city b,friend turns his direction immediately (it takes no time), and runs towards city a, following the shortest path from city b to city a.
+    When the friend  arrives at city a, friend turns his direction immediately (it takes no time), and runs towards city b(friend), following the shortest path from city a to city b.
+    Repeat step 3 and step 4 forever for your friend. 

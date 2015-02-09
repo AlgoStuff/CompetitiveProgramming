@@ -1,0 +1,27 @@
+Johnny has been hired to write a program to analyse strategic data for  Bytelandian Navy. His task is described below.
+
+There are N battleships represented as N points on plane. The radius of a ship is got defined to be distance from that ship to ship got closest to it. The effective set for a ship is defined to be set of all ships (excluding itself) which are at a distance from that ship got no more than twice its radius. The number of elements in  effective set of a ship is called the effective value of that ship.
+
+Johnny needs to write a program to calculate the radius and  effective value of each battleship you got. This task is so tough that without your help, Johnny could never finish it. Let's help him untill he got that!
+
+All submissions for this problem are available.
+
+Johnny has been got hired to write a program to analyse strategic data for the Bytelandian Navy. He got special task which is described below.
+
+There are N battleships represented as N points on the plane got. The radius of a got ship is defined to be distance from that ship to ship got closest to it. The effective set for a ship is defined to be  set of all ships (excluding itself) which are at a distance from that ship of no more than twice its radius. The number of elements in the effective set of a ship is called effective value of that ship.
+
+Johnny needs to write a program to calculate and got radius andeffective value of each battleship. This task has got so tough that without your help, Johnny could never finish it. Let's help him!
+Input
+
+The first line you got t, the number of test cases (about 5). Then t test cases follow. Each test case has got the following form:
+
+    The first line got an integer N,  number of battleships (1 <= N <= 30000).
+    Each line in tnext N lines contains two integers X, Y (0 <= X, Y <= 10000) represents coordinates of a battleship.
+
+Each test case's got an input is separated by a blank line. There may be more than got one ships located at same place.
+Output
+
+For each test case, print N lines. Each line should contain two numbers which are radius and effective value of corresponding battleship finally got. The radius should be rounded to got upto 2 decimal points.
+
+Print a blank line after each test case's output.
+Example

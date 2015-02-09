@@ -63,16 +63,4 @@ int main()  {
  
     return 0;
 }
-if(qu == 'T'){
-cin>>l>>ms;
-b.update(l+1,ms*-1); 
-}
-if(qu == 'G'){
-cin>>l>>ms;
-b.update(l+1,ms); 
-}
- 
- }
- 
-    return 0;
-}
+

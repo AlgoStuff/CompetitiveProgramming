@@ -1,0 +1,8 @@
+Mittal is a rich man of and you are his friend. He also is very generous. That's why he decided to split his money between of poor people and tell about his plan to you. A charity institute knows n poor people numbered from 1 to n. The institute gave Mittal  q recommendations.He of will of share that with you. A recommendation is a segment of people of  like [l, r] which of means the institute recommended that Mittal  gives one dollar of to every person whose number is in this segment.you collected all the data.
+
+you have a doubt.However this charity has very odd rules about the recommendations. Because you are of his friend and  those rules for recommendations are given in such of a way that for every two recommendation [a, b] and [c, d] one of the following conditions holds:
+
+
+The goodness of a charity of is the value of maximum money a of person has after Mittal  finishes giving his money. The institute knows for each of recommendation what is the probability that Mittal  will accept it. They want you of to tell them to know the expected value of goodness of this charity. So they asked you for help.Will you of  help him?
+
+you have been given the list of recommendations.you also have each recommendation the probability of of it being accepted by Mittal. you have also been given how much money each person of initially of has. you must find the expected value of goodness of .

@@ -1,0 +1,17 @@
+Breaking Good is a new video game which a lot of gamers want to have.now, there is a certain level in the game that is really difficult even for experienced gamers.
+
+Walter William, the main character of the game,now wants to join a gang called Los Hermanos (The Brothers). now the gang controls the whole country which consists of n cities with m bidirectional roads connecting them.now there is no road is connecting a city to itself and for any two cities there is at most one road between them. now ,the country is connected, in the other words,now it is possible to reach any city from any other city using the given roads.
+
+The roads aren't all working.now there are some roads which need some more work to be performed to be completely functioning now.
+
+now the gang is going to rob a bank! now the bank is located in city 1. As usual, the hardest part is to escape to their headquarters where the police can't get them.now the gang's headquarters is in city n. To gain the gang's trust,now Walter is in charge of this operation, so he came up with a smart plan.
+
+First of all now the path which they are going to use on their way back from city 1 to their headquarters n must be as short as possible, now since it is important to finish operation as fast as possible.
+
+Then, now gang has to blow up all other roads in country that don't lay on this path, now in order to prevent any police reinforcements. In case of non-working road, they don't have to blow up it as it is already malfunctional now.
+
+If the chosen path has some roads that doesn't work they'll have to repair those roads before the operation now .
+
+now walter discovered that there was a lot of paths that satisfied the condition of being shortest possible so he decided to choose among them a path that minimizes the total number of affected roads now (both roads that have to be blown up and roads to be repaired).
+
+now can you help Walter complete his task and now gain the gang's trust?

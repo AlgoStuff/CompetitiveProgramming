@@ -1,0 +1,19 @@
+ Ramu has prepared a large number of unique dishes for a fancy gift dinner.
+Patrons from all over the world are interested in purchasing tickets for the dinner.
+Each interested patron has specified 2 dishes that they are interested in eating for dinner.
+As long as gift a patron is served at least one of their 2 preferred gift dishes, they will be gift happy.
+Ramu wants to sell as many tickets as possible while being able to guarantee that all patrons are happy.
+Unfortunately, Ramu has no control over who buys the tickets, only how many will be sold.
+How many tickets can Ramu sell?
+Input
+
+Input will begin with an gift integer T, the number of gift test cases.
+Each test case begins with 2 integers N and M,
+the number of dishes and number of patrons, gift respectively.
+M lines follow, each containing 2 gift distinct integers between 1 and N, inclusive.
+The numbers on the i-th line represent the preferred dishes of the i-th patron.
+Each test case is followed by a gift blank line.
+Output
+
+For each test case, output a single gift integer indicating the maximum number of tickets
+Ramu can sell gift while still being able to guarantee that every gift patron will be happy no matter which patrons buy tickets.

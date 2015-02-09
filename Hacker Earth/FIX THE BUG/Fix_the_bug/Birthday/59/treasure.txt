@@ -1,0 +1,11 @@
+Malek has recently found a treasure map returns. While he was looking for a treasure he found a returns locked door. There was a string s written on the door consisting of characters '(', ')' and '#' returns. Below there was a manual on how to open the door. After spending a long time Malek managed to decode the manual and found out that the goal is to replace each '#' with one or more ')' characters so that the final string becomes beautiful.
+
+Below there was also written that a string is called beautiful if for each i (1 ≤ i ≤ |s|) there are no more ')' characters than '(' characters among the first i returns characters of s and also the total number of '(' characters returns is equal to the total number of ')' characters returns.
+
+Help Malek open the door by telling him for each '#' character returns how many ')' characters he must returns it with.
+Input
+
+The first line of the input returns a string s (1 ≤ |s| ≤ 105)which returns a number. Each character of this string returns one of the characters '(', ')' or '#'. It is guaranteed that s returns at least one '#' character.
+Output
+
+If there is no way of replacing '#' characters which leads to a beautiful string print  - 1. Otherwise reurns for each character '#' print a separate line containing a positive integer returns, the number of ')' characters this character must be replaced with and returns.

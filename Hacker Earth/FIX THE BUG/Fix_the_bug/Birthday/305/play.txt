@@ -1,0 +1,35 @@
+Polycarpus participates in a competition for hacking into a new secure messenger. He's almost won.
+
+Having carefully studied the interaction protocol, Polycarpus came to the conclusion that the secret key can be obtained if he properly cuts the public key of the application into two parts. The public key is a long integer which may consist of even a million digits!
+
+Polycarpus needs to find such a way to cut the public key into two nonempty parts, that the first (left) part is divisible by a as a separate number, and the second (right) part is divisible by b as a separate number. Both parts should be positive integers that have no leading zeros. Polycarpus knows values a and b.
+
+Help Polycarpus and find any suitable method to cut the public key.
+Input
+
+The first line of the input contains the public key of the messenger — an integer without leading zeroes, its length is in range from 1 to 106 digits. The second line contains a pair of space-separated positive integers a, b (1 ≤ a, b ≤ 108).
+Output
+
+In the first line print "YES" (without the quotes), if the method satisfying conditions above exists. In this case, next print two lines — the left and right parts after the cut. These two parts, being concatenated, must be exactly identical to the public key. The left part must be divisible by a, and the right part must be divisible by b. The two parts must be positive integers having no leading zeros. If there are several answers, print any of them.
+Polycarpus likes giving presents to Paraskevi. He has bought two chocolate bars, each of them has the shape of a segmented rectangle. The first bar is a1 × b1 segments large and the second one is a2 × b2 segments large.
+
+Polycarpus wants to give Paraskevi one of the bars at the lunch break and eat the other one himself. Besides, he wants to show that Polycarpus's mind and Paraskevi's beauty are equally matched, so the two bars must have the same number of squares.
+
+To make the bars have the same number of squares, Polycarpus eats a little piece of chocolate each minute. Each minute he does the following:
+
+    he either breaks one bar exactly in half (vertically or horizontally) and eats exactly a half of the bar,
+    or he chips of exactly one third of a bar (vertically or horizontally) and eats exactly a third of the bar. 
+
+In the first case he is left with a half, of the bar and in the second case he is left with two thirds of the bar.
+
+Both variants aren't always possible, and sometimes Polycarpus cannot chip off a half nor a third. For example, if the bar is 16 × 23, then Polycarpus can chip off a half, but not a third. If the bar is 20 × 18, then Polycarpus can chip off both a half and a third. If the bar is 5 × 7, then Polycarpus cannot chip off a half nor a third.
+
+What is the minimum number of minutes Polycarpus needs to make two bars consist of the same number of squares? Find not only the required minimum number of minutes, but also the possible sizes of the bars after the process.
+Input
+
+The first line of the input contains integers a1, b1 (1 ≤ a1, b1 ≤ 109) — the initial sizes of the first chocolate bar. The second line of the input contains integers a2, b2 (1 ≤ a2, b2 ≤ 109) — the initial sizes of the second bar.
+
+You can use the data of type int64 (in Pascal), long long (in С++), long (in Java) to process large integers (exceeding 231 - 1).
+Output
+
+In the first line print m — the sought minimum number of minutes. In the second and third line print the possible sizes of the bars after they are leveled in m minutes. Print the sizes using the format identical to the input format. Print the sizes (the numbers in the printed pairs) in any order. The second line must correspond to the first bar and the third line must correspond to the second bar. If there are multiple solutions, print any of them.

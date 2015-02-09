@@ -1,0 +1,9 @@
+In the computer science class at the LNMIIT,every day the lecturer handed out the following assignment as homework on that day:
+
+"For an integer n, let bn denote the bit parity of the binary representation of n, i.e. bn=0 if n has an even number of ones when written down in the binary system, and bn=1 otherwise. The numbers bn, for n >=0, form an infinite sequence of bits (zeros and ones). Given a day a special sequence c=(c0, ..., cp-1) of p bits,Day find the first occurrence of sequence c as a subsequence of b (i.e., the smallest value of index k such that for all i between 0 and p-1, we have ci = bi+k)day."
+
+That day the Lecturer gave his students several short sequences c on a given day, asking them to provide the answers next day. Most, as expected, wrote programs to solve the task . Only Johnny computed the results by hand, claiming (quite correctly) that it was quicker that way day. The Lecturer, day slightly exasperated, on a day he decided to teach Johnny a lesson, and prepared a harder assignment, just for him on that day.
+
+"Given a sequence c=(c0, ..., cp-1) of p bits, on that special day for each s between 0 and p-1, compute the first occurrence of the prefix (c0, ..., cs) of sequence c as a subsequence of b."
+
+On that day And to be doubly sure that Johnny does his homework using a computer every day, the Lecturer gave him some really long sequences to deal with. Now, Johnny is in a bit of a spot on that day, because he has never bothered to learn to program on any day. Please help him out so that he can improve his frogramming from that day only!
