@@ -1,0 +1,28 @@
+﻿Perfect pair 2:
+
+Given two strings A,B . Pair (A,B) is called perfect pair if B is cyclic of A.
+String A can contain atmost  and 'k' different characters
+Given 'n' length of string A and 'k' , Find out number of pairs (A,B) possible modulo 10^9 + 7.
+
+Constraits:
+1<=n<=10^9
+1<=k<=100
+Input:
+contains two integers 'n' and 'k' separated by a space
+
+Output:
+print the answer modulo 10^9 + 7
+
+Sample Input:
+2 2
+
+Sample Output:
+6
+
+suppose the two charaters be {a,b},thus 
+1. (aa,aa)
+2. (ab,ba)
+3. (ba,ba)
+4. (ab,ab)
+5. (ba,ab)
+6. (bb,bb)
