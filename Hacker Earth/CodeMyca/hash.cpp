@@ -3,9 +3,9 @@
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
 //	National Institute of Technology , Calicut						
-//	problem link : http://discuss.codechef.com/questions/18250/eulers-totient-function
-//	Concept : 
-//	Reference :	
+//	problem link : https://www.hackerearth.com/codemyca/algorithm/army/
+//	Concept : Hashing
+//	Reference :	None
 //																		
 /***********************************************************************/
 
@@ -52,10 +52,38 @@ ll gcd(ll a,ll b){
 
 
 int main(){
-	int t;
-	scanf("%d",&t);
-	while(t--){
-		
+	int n;
+	cin>>n;
+	int a[100001][10];
+	memset(a,0,sizeof(a[0][0])*100001*10);
+	for(int i = 1; i <=n;i++){
+		int temp = i;
+		while(temp){
+			int rem = temp%10;
+			a[i][rem]=1;
+			temp = temp/10;
+		}
+	}
+
+
+
+	int q;
+	cin>>q;
+	while(q--){
+		int count[100001]={0};
+		int m;
+		cin>>m;
+		int res=0;
+		while(m--){
+
+			int j;
+			cin>>j;
+			for(int i = 1; i <= n;i++){
+				if(a[i][j]==1 && count[i]==0){res+=1;count[i]=1;}
+			}
+			
+		}
+		cout<<res<<endl;
 	}
 	return 0;
 }

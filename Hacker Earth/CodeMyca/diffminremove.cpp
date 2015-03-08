@@ -3,9 +3,9 @@
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
 //	National Institute of Technology , Calicut						
-//	problem link : http://discuss.codechef.com/questions/18250/eulers-totient-function
-//	Concept : 
-//	Reference :	
+//	problem link : https://www.hackerearth.com/codemyca/algorithm/simple-task/
+//	Concept : Maths
+//	Reference :	None
 //																		
 /***********************************************************************/
 
@@ -55,7 +55,33 @@ int main(){
 	int t;
 	scanf("%d",&t);
 	while(t--){
-		
+		int n;
+		cin>>n;
+		ll a[n];
+		for(int i = 0; i < n;i++){
+			cin>>a[i];
+		}
+		ll total=0;
+		for(int i = 0; i < n-1;i++){
+			total+=abs(a[i]-a[i+1]);
+		}
+		ll res = total;
+		int minpos = 0;
+		for(int i = 0; i < n;i++){
+			ll curr;
+			if(i==0 && n>1) curr = total - abs(a[1]-a[0]);
+			else if(i==0 && n==1) curr = -1;
+			else if(i==n-1 && n>1) curr = total - abs(a[i]-a[i-1]);
+			else{
+				curr = total - abs(a[i]-a[i-1]) - abs(a[i]-a[i+1]) + abs(a[i+1]-a[i-1]);
+			}
+			if(curr<res){
+				res = curr;
+				minpos = i;
+			}
+		}
+		cout<<minpos<<endl;
+
 	}
 	return 0;
 }

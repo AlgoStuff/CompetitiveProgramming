@@ -3,9 +3,9 @@
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
 //	National Institute of Technology , Calicut						
-//	problem link : http://discuss.codechef.com/questions/18250/eulers-totient-function
-//	Concept : 
-//	Reference :	
+//	problem link : https://www.hackerearth.com/codemyca/algorithm/little-stuart-and-his-teacher-20/
+//	Reference :	http://discuss.codechef.com/questions/18250/eulers-totient-function
+//	Concept : Relative primes , Maths
 //																		
 /***********************************************************************/
 
@@ -48,14 +48,34 @@ ll gcd(ll a,ll b){
 	return a;
 }
 
-
+int phi (int n) {
+    int result = n;
+    for (int i=2; i*i<=n; ++i)
+        if (n % i == 0) {
+            while (n % i == 0)
+                n /= i;
+            result -= result / i;
+        }
+    if (n > 1)
+        result -= result / n;
+    return result;
+}
 
 
 int main(){
 	int t;
+	
+	long long int a[1000001]={0};
+
+	for(int i = 1;i<=1000000;i++){
+		a[i] = a[i-1]+phi(i);
+	}
 	scanf("%d",&t);
 	while(t--){
-		
+		long long int n;
+		scanf("%lld",&n);
+		printf("%lld\n",n*(n-1)/2+1-a[n]);
+
 	}
 	return 0;
 }
