@@ -1,0 +1,17 @@
+Brief Problem Statement:
+
+We are given given N people and the friendship relation between them. We want to invite all of the people to an event. The invitations work in the following manner, each invited person invites each of their friends and so on. So, we need to determine the minimum number of people to reach out to initially, such that all of the N people can be eventually invited.
+
+Solution:
+
+This question can be visualized as a graph problem. Each person can be thought of as a vertex in a graph and the friendship relation induces edges between 2 people. Inviting a person means that all of that person's friends are also invited to it, as described in the problem statement. In the context of the above graph, a person and all of his/her friends corresponds to a component. As we need to minimize the number of people invited initially, we should find the number of components in the graph.
+For finding the number of components in the graph, we should use a graph traversal algorithm, like Depth First Search(DFS). The algorithm would be as follows :
+
+Components(G):		//Input: Graph G
+	count = 0
+	for v in G.V:
+		if v has not been visited:
+			DFS(G,v)
+			count = count + 1	
+	
+	return count

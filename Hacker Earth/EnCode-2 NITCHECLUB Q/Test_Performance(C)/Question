@@ -1,0 +1,13 @@
+Chinna is preparing for an online entrance examination. The performance in the examination is measured on a rating scale of 1 to 10^6. Recently, Chinna came across an advertisement of an institution which guarantees an increase of 'd' in the rating for an examination for an hour of coaching. Chinna wants to excel the performance compared to previous examination each time he takes up a test. Now, Chinna wants to spend minimum time on coaching and asks Chinnu for help to figure out the total time he needs to put on coaching.
+
+Input:
+	n : Number of examinations Chinna is going to take up
+	d : Increase in the rating that the institution has guaranteed
+	ai : Rating that Chinna is expected to achieve in the i th examination
+
+Output:
+	Single integer containing the number of hours of coaching needed
+
+Constraints:
+	1 <= n <= 2000
+	1 <= d,ai <= 10^6

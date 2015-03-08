@@ -1,0 +1,46 @@
+Let me get to the point. No more of those stories.
+There are three types of queries(push,pop and max) for the stack. The push query (denoted by 1) inserts an element into the top of the stack. The pop query (denoted by 2) deletes an element from the top of the stack. The max query (denoted by 3) displays the largest element in the stack at that point of time.
+
+Input format:
+The first line denotes the number of queries, say q.
+Then q lines follow belonging to one of the three formats
+i)   1 n   //pushing n into the stack where 10000>n>0.
+ii)  2     //pop 
+iii) 3     //max
+
+Constraints:
+0<q<100000000
+0<n<10000
+At any point of time, the stack will have atleast on element in it
+
+Example Input:                                  
+1 2							
+1 3
+3						
+1 4
+3						
+2						
+1 2
+3						
+1 6
+1 3
+3						
+
+Example Output:
+3
+4
+3
+6
+
+Expalnation:
+After 1st query, the stack contains 2; max=2
+After 2nd query, the stack contains 2,3 ; max=3;
+After 3rd query, max=3 so display 3;
+After 4th query, the stack contains 2,3,4 ; max=4;
+After 5th query, max=4 so display 4;
+After 6th query, the stack contains 2,3 ; max=3;
+After 7th query, the stack contains 2,3,2 ; max=3;
+After 8th query, max=3 so display 3;
+After 9th query, the stack contains 2,3,6 ; max=6;
+After 10th query, the stack contains 2,3,6,3 ; max=6;
+After 11th query, max=6 so display 6;
