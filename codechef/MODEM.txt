@@ -1,0 +1,297 @@
+#include<iostream.h>
+#include"c:\tcc\safraj\mod.cpp"
+// start of modem.cpp
+ModemCapabilities ModemDataBase[]={
+{"Hayes Compatible",
+ "AT &F &C1 &D2",
+ "NO CARRIER\0ERROROR\0NO DIAL TONE \OBUSY\0NO ANSWER\0\0",
+ "",
+ "",
+ 2400L.
+ 0,
+ 0
+ },
+ {"Practical Peripherals 1400FX",
+  "AT &F0 &C1 &D2 S95=44",
+  "NO CARRIER\0ERROROR\0NO DIAL TONE \OBUSY\0NO ANSWER\0\0",
+  "CLASS 5\OV.42BIS\0\0",
+  "LAP-M\0ALT\0\0",
+  57600L,
+  1,
+  1
+  },
+ {"GVC",
+ "AT & F &C1 S9=15",
+ "NO CARRIER\0ERROROR\0NO DIAL TONE \OBUSY\0NO ANSWER\0\0",
+ "",
+ "",
+ 2400L,
+ 0,
+ 0
+ },
+ {"Intel SatisFAXtion 400e",
+  "AT & F",
+  "NO CARRIER\0ERROROR\0NO DIAL TONE \OBUSY\0NO ANSWER\0\0",
+  "COMP\0\0",
+  "LAPM\OMNP\OREL\0\0",
+  57600L,
+  1,
+  1},
+  {""}
+  };
+  Modem::Modem(RS232 &rs232_port,char *modem_name)
+  {
+  int il
+  port=&rs232_port;
+  modem_data=&ModemDataBase[0];
+  for(int i=0;*ModemDataBase[i].name!='\0';i++)
+  {
+  if(strcmp(modem_name,ModemDataBase[i].name)==0){
+  modem_data=&ModemDataBase[i];
+  break;
+  }
+  }
+  tone_dial=0;
+  carrier_timeout=33600L;
+  }
+
+  char *Modem::ErrorName(ModemError status)
+  {
+  switch(status)
+ {
+ case MODEM_SUCCESS:   return "Success";
+ case MODEM_NO_RESPONSE: return "No response";
+ case MODEM_NO_CONNECTION: return "No connection";
+ case MODEM_DISCONNECT_FAILED:return "Disconnect failed";
+  case MODEM_USER_ABORT:return "User abort";
+  default:return "Unknown Error";
+  }
+  }
+  ModemError Modem::Initialize(void)
+  {
+  long delay_time;
+  port->Set(modem_data->initial_baud_rate);
+  port->RtsCtsHandshaking(modem_data->handshaking);
+  port->Write('\r');
+  delay_time=ReadTime()+1000;
+  while(ReadTime()<delay_time)
+  port->IdleFunction();
+  port->Write(modem_data->initialization_string);
+  port->Write('\r');
+  return wait_for_response();
+  }
+
+  void Modem::read_line(char *buffer,int buf_size)
+  {
+  int c;
+  for(;;)
+  {
+  c=port->Read(500);
+  if(c<0) break;
+  echo((char)c);
+  *buffer++=(char)c;
+  if(--buf_size<=1) break;
+  if(c=='\n') break;
+  }
+  *buffer='\0';
+  }
+
+  ModemError Modem::wait_for_response(void)
+  {
+  long timeout;
+  char buffer[81];
+  ModemError status;
+  timeout=ReadTime()+2000;
+  while(ReadTime()<timeout)
+  {
+  read_line(buffer,81);
+  if(strncmp(buffer,"OK",2)==0)
+  return MODEM_SUCCESS;
+  if((status=UserAbort())!=MODEM_SUCCESS)
+  return status;
+  }
+  return MODEM_NO_RESPONSE;
+  }
+  char *scan_strings(char *buffer,char *strings)
+  {
+  char *p;
+  while(*strings)
+  {
+  if((p=strstr(buffer,strings))!=0) return p;
+  strings+=strlen(strings)+1;
+  }
+  return p;
+  }
+  ModemError Modem::wait_for_connection(void)
+  {
+  long timeout;
+  char *connect;
+  ModemError status;
+  compressing=0;
+  protocol=0;
+  timeout=ReadTime()+carrier_timeout;
+  while(ReadTime()<timeout)
+  {
+  read_lline(buffer,81);
+  if(scan_strings(buffer,modem_data->fail_strings))
+  return MODEM_NO_CONNECTION;
+  if scan_strings(buffer, modem_data->compression_strings))
+  compressing=1;
+  if(scan_strings(buffer,modem_data->protocol_strings))
+  protocol=1;
+  if(connect=strstr(buffer,"CONNECT"))!=0)
+  {
+  if(!modem_data->locked_baud_rate){
+  local_baud_rate=atoi(connect+8);
+  if(local_baud_rate!=0)port->Se5t(local_baud_rate);
+  }else
+  local_baud_rate=modem_data->data->initial_baud_rate;
+  return MODEM_SUCCESS;
+  }
+  if((status=UserAbort())!=MODEM_SUCCESS)
+		return MODEM_SUCCESS;
+		}
+		if((status=UserAbort()!=MODEM_SUCCESS) return status;}
+		return MODEM_NO_CONNECTION;
+		}
+
+
+  ModemError Modem::Dial(char *dial_string)
+  {
+  port->Write("ATD");
+  if(tone_dail)
+  port->Write('T');
+  else
+  port->Write('P');
+  port->Write(dial_string);
+  port->Write('\r');
+  return wait_for_connection();
+  }
+
+  ModemError Modem::Answer(void)
+  }
+  port->Write("ATA \r");
+  return wait_for_connection();
+  }
+
+  ModemError Modem::Disconnect(void)
+  {
+  long delay_time;
+  port->Dtr(0);
+  delay_time=ReadTime()+1250;
+  while(ReadTime()<delay_time)
+  port->IdleFunction();
+  port->Dtr(1);
+  port->Write("AT\r");
+  if(wait_for_response()==MODEM_SUCCESS)
+  {
+  port->Set(modem_data->initial_baud_rate);
+  return MODEM_SUCCESS;
+  }
+  port->Write("+++");
+  delay_time=ReadTime()=1250;
+  wait_for_response();
+  port->Write("ATR0\r");
+  if(wait_for_response()==MODEM_SUCCESS){
+  port->Set(modem_data->initial_baud_rate);
+  return MODEM_SUCCESS;
+  }
+  return MODEM_DISCONNECT_FAILED;
+  }
+
+
+ ModemError Mode::UserAbort(void)
+ {
+ if(!kbhit())
+ return MODEM_SUCCESS;
+ getch();
+ return MODEM_USER_ABORT;
+ }
+
+ int Modem::ReadRegister(int reg)
+ {
+  char buffer[81];
+  long timeout;
+  int value;
+  ModemError status;
+  sprintf(buffer,"ATS%d ?\r",reg);
+  port->Write(buffer);
+  timeout=ReadTime()+3000;
+  value=(int)MODEM_NO_RESPONSE;
+  while(timeout>ReadTime())
+  { read_line(buffer,80);
+  if(strncmp(buffer,"OK",2)==0)
+  break;
+  if((status=UserAbort())!=MODEM_SUCCESS)
+  return status;
+  if(isdigit(*buffer))
+  value=atoi(buffer);
+  }
+  return value;
+  }
+
+  ModemError Modem::SendCommand(char *command)
+  {
+  port->Write(command);
+  port->Write('\r');
+  return wait_for_response();
+  }
+
+
+  void Modem::DumpState(void)
+  {
+  char *p;
+  cout<<"\n Modem Status:\n\n"<<Name "<<modem_data->name<<'\m';
+  cout<<"Initstring"<<modem_data->initialization_string<<'\n';
+  cout<<"Fall strings";
+  p=modem_data_->fail_strings;
+  while( *p)
+  {
+  cout<<p;
+  p+=strlen(p)+1;
+  if(*p) cout<<" ",
+  }
+  cout<<'\n'<<Compression strings";
+  p=modem_data->compression_strings;
+  while(*p)
+  {
+  cout<<p;
+  p+=strlen(p)+1;
+  if(*p) cout<<" ";
+  }
+  cout<<'\n'<<"Protocol strings";
+  p=modem_data->protocol_strings;
+  while(*p)
+  {
+  cout<<p;
+  p+=strlen(p)+1;
+  if(*p) cout<< "";
+  }
+  cout<<'\n';
+  cout<<"Initial baud rate:"<<modem-data->initial_baud_rate<<'\n';
+  cout<<"Baud rate lcoked"<<((modem_data->locked_baud_rate)?'Y':'N')<<'\n';
+  cout<<"HardwareHandshaking"<<((modem_data->handshaking)?'Y':'N');
+  cout<<"Dialing methos "<<((tone_dial)?"Tone":"Pulse")<<'\n';
+  cout<<"Carrier timeout "<<carrier_timeour<<'\n';
+  cout<<"Connected "<<((port->Cd())?'Y':'N')<<'\n';
+  if(!port->Cd()) return;
+  cout<<"Local baud rate"<<local_baud_rate<<'\n';
+  cout<<"Compressoing "<<((compressing)?'Y':'N')<<'\n';
+  cout<<"Protocol"<<((protocol)?'Y':'N')<<'\n';
+  }
+  /// end of modem.cpp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+clrscr();
+int i,j,p,n,l,m,u;
+printf("please enter the height of ur castle but.... remember greater 
+that
+4");
+scanf("%d",&n);
+printf("Ur castle's height is %d",n);
+for(i=0;i<n;i++)
+{
+printf("
+");
+for(j=0;j<n-i-1;j++)
+{
+printf(" ")  ;
+}
+for(p=1;p<=2*i+1;p++)
+{
+printf("*");
+}
+
+}
+ for(l=0;l<=n-1;l++)
+ {
+ printf("
+ ");
+ printf("*");
+ for(m=0;m<2*n-5;m++)
+ {
+ printf(" ");
+ }
+ printf("*");
+ if(l==n-1)
+ {
+ printf("
+ ");
+ printf("*");
+ for(u=0;u<2*n-4;u++)
+ {
+ printf("*");
+ }
+ }
+ }
+printf("Thanx for building ur castle and thanx for using this 
+micro-mini
+Project");
+printf("U can contect me on this mailing address
+chetanasprojects@yahoo.com");
+printf("And can write to me about ur cofusions and ur questions on the
+same id");
+getch();
+}

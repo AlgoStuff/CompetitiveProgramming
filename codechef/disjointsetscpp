@@ -1,0 +1,71 @@
+#include <iostream>
+using namespace std;
+
+long NodeAddress[10] = {0};
+int n=0;
+
+template<class T> class ListSet {
+private:
+    struct Item;
+    struct node {
+        T val;
+        node *next;
+        Item *itemPtr;
+    };
+    struct Item {
+        node *hd, *tl;
+    };
+
+public:
+    ListSet() { }
+    long makeset(T a);
+    long find (long a);
+    void Union (long s1, long s2);
+};
+
+template<class T> long ListSet<T>::makeset (T a) {
+    Item *newSet = new Item;
+    newSet->hd = new node;
+    newSet->tl = newSet->hd;
+    node *shd = newSet->hd;
+    NodeAddress[n++] = (long) shd;
+    shd->val = a;
+    shd->itemPtr = newSet;
+    shd->next = 0;
+    return (long) newSet;
+}
+
+template<class T> long ListSet<T>::find (long a) {
+    node *ptr = (node*)a;
+    return (long)(ptr->itemPtr);
+}
+
+template<class T> void ListSet<T>::Union (long s1, long s2) {
+    //change head pointers in Set s2
+    Item *set2 = (Item*) s2;
+    node *cur = set2->hd;
+
+    Item *set1 = (Item*) s1;
+
+    while (cur != 0) {
+        cur->itemPtr = set1;
+        cur = cur->next;
+    }
+    //join the tail of the set to head of the input set
+    (set1->tl)->next = set2->hd;
+    set1->tl = set2->tl;
+    delete set2;
+}
+
+int main () {
+    ListSet<char> a;
+    long s1, s2, s3, s4;
+    s1 = a.makeset('a'); 
+    s2 = a.makeset('b'); 
+    s3 = a.makeset('c'); 
+    s4 = a.makeset('d');
+    cout<<s1<<' '<<s2<<' '<<s3<<' '<<s4<<endl;
+    cout<<a.find(NodeAddress[2])<<endl;
+    a.Union(s1, s3);
+    cout<<a.find(NodeAddress[2])<<endl;
+}
