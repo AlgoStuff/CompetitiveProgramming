@@ -3,7 +3,7 @@
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
 //	National Institute of Technology , Calicut						
-//	problem link : http://discuss.codechef.com/questions/18250/eulers-totient-function
+//	problem link :
 //	Concept : 
 //	Reference :	
 //																		
