@@ -1,0 +1,12 @@
+Chinnu has recently bought some land and started farming apples. The land area is n x m sq.mts ie., length is n mts and breadth is m mts. She decided to plant a tree at every metre distance. Hence there would be a total of n x m trees. Few months later, as the distance between trees is less, the farm becomes dense such that she could go only either in right or left direction. She realise that she couldn't cover all the trees moving in this way, she decides to enter at the upper-left corner of the farm and come out at bottom-right corner. Now it's your job to get determine the path following the above constraints such that Chinnu gets maximum number of apples when she comes out of the farm.
+
+Input :
+	First line consists of two integers n , m
+	Next n lines consists of m space separated integers which denotes the number of apples on the respective tree
+
+Output :
+	A single integer denoting the maximum number of apples collected
+
+Constraints :
+	1 <= n,m <= 1000
+	1 <= a[i] <= 10^9
