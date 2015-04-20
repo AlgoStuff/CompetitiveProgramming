@@ -69,7 +69,7 @@ int zeros(int  n)
 
 
 void pre(){
-	for(int i = 1; i <= 1000000; i++){
+	for(int i = 0; i <= 1000000; i++){
 		zeroes[i] = zeros(i);
 	}
 }
@@ -77,13 +77,13 @@ void pre(){
 
 int main(){
 	pre();
-	build(1,1,500000);
+	build(1,0,1000000);
 	int t;
 	scanf("%d",&t);
 	while(t--){
 		int a,b;
 		cin>>a>>b;
-		cout<<query(1,1,500000,a,b)<<endl;
+		cout<<query(1,0,1000000,a,b)<<endl;
 	}
 	return 0;
 }
