@@ -3,8 +3,8 @@
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
 //	National Institute of Technology , Calicut						
-//	problem link :
-//	Concept : 
+//	problem link : http://www.codechef.com/JUNE15/problems/CBARG
+//	Concept : AdHoc , Easy
 //	Reference :	None
 //																		
 /***********************************************************************/
@@ -55,7 +55,19 @@ int main(){
 	int t;
 	scanf("%d",&t);
 	while(t--){
-		
+		int n;
+		cin>>n;
+		ll res = 0;
+		ll curr = 0;
+		while(n--){
+			ll temp;
+			cin>>temp;
+			if(curr<temp){
+				res+=(temp-curr);
+			}
+			curr=temp;
+		}
+		cout<<res<<endl;
 	}
 	return 0;
 }

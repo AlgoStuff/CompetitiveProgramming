@@ -3,8 +3,8 @@
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
 //	National Institute of Technology , Calicut						
-//	problem link :
-//	Concept : 
+//	problem link :http://codeforces.com/contest/556/problem/C
+//	Concept : AdHoc
 //	Reference :	None
 //																		
 /***********************************************************************/
@@ -52,10 +52,23 @@ ll gcd(ll a,ll b){
 
 
 int main(){
-	int t;
-	scanf("%d",&t);
-	while(t--){
+	int n,k;
+	cin>>n>>k;
+	int res2 = 0;
+	int res = 0;
+	for(int i = 0; i < k;i++){
+		int tmp;
+		cin>>tmp;
+		bool fnd = false;
 		
+		for(int j = 1; j <= tmp;j++){
+			int temp;
+			cin>>temp;
+			if(temp==1){fnd = true;}
+			if(fnd and temp == j) res+=1;
+		}
+		res2+=(tmp-1);
 	}
+	cout<<(res2-res+1)+(n-res)<<endl;
 	return 0;
 }

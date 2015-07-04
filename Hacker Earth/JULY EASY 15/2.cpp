@@ -3,8 +3,8 @@
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
 //	National Institute of Technology , Calicut						
-//	problem link :
-//	Concept : 
+//	problem link : https://www.hackerearth.com/july-easy-15/algorithm/supernatural-squad-2/
+//	Concept : Recurr,DP
 //	Reference :	None
 //																		
 /***********************************************************************/
@@ -54,8 +54,24 @@ ll gcd(ll a,ll b){
 int main(){
 	int t;
 	scanf("%d",&t);
+	ll dp[201][201];
+	memset(dp,0,sizeof(dp[0][0])*201*201);
+	for(int i = i; i <=200 ;i++){
+		for(int j = 200; j >0;j--){
+			if(i==j) dp[i][j]=1;
+			else if ( i < j ) dp[i][j]=0;
+			else {
+				dp[i][j] = dp[i][j+1]+dp[i-j][j];
+
+			}
+		}
+	}
+	
 	while(t--){
-		
+		int n,k;
+		ll res = 0;
+		cin>>n>>k;
+			cout<<dp[n][k]<<endl;
 	}
 	return 0;
 }

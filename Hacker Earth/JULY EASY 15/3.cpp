@@ -3,8 +3,8 @@
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
 //	National Institute of Technology , Calicut						
-//	problem link :
-//	Concept : 
+//	problem link : https://www.hackerearth.com/july-easy-15/algorithm/the-savior-3/
+//	Concept : AdHoc
 //	Reference :	None
 //																		
 /***********************************************************************/
@@ -55,7 +55,26 @@ int main(){
 	int t;
 	scanf("%d",&t);
 	while(t--){
-		
+		int n;
+		cin>>n;
+		int a[1001]={0},o=0,e=0;
+		int h[100001]={0};
+		int h2[100001]={0};
+		for(int i = 0; i < n;i++){
+			cin>>a[i];
+			if(a[i]%2)o++;
+			else e++;
+			h[a[i]]+=1;
+		}
+		ll r = ((o*(o-1))/2 + (e*(e-1))/2);
+		for(int i=0;i<n;i++)
+		{
+			if(h2[a[i]]==0){
+						r= r-(h[a[i]]*(h[a[i]]-1)/2);
+						h2[a[i]]=1;
+					}
+		}
+		cout<<r<<endl;
 	}
 	return 0;
 }

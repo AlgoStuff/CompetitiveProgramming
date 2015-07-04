@@ -3,8 +3,8 @@
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
 //	National Institute of Technology , Calicut						
-//	problem link :
-//	Concept : 
+//	problem link : https://www.hackerrank.com/contests/hackerrank-hiringsprint/challenges/hr4
+//	Concept :  Segment Tree , Basic 
 //	Reference :	None
 //																		
 /***********************************************************************/
