@@ -4,7 +4,7 @@
 //	Rakesh Mahadasa														
 //	National Institute of Technology , Calicut						
 //	problem link : https://www.hackerearth.com/code-monk-sorting/algorithm/puchi-and-luggage/
-//	Concept : 
+//	Concept : Counting Sort
 //	Reference :	None
 //																		
 /***********************************************************************/
@@ -53,9 +53,19 @@ ll gcd(ll a,ll b){
 
 int main(){
 	int t;
-	scanf("%d",&t);
+	cin>>t;
 	while(t--){
-		
+		int n;
+		cin>>n;
+		int a[n];
+		int hash[100001]={0};
+		for(int i = 0; i < n;i++){
+			cin>>a[i];
+			hash[a[i]]+=1
+		}
+		for(int i = 1;i<=10000;i++){
+			hash[i]+=hash[i-1];
+		}
 	}
 	return 0;
 }
