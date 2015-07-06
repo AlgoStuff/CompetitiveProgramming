@@ -52,47 +52,24 @@ ll gcd(ll a,ll b){
 }
 
 
-int F[1000001],n;
-int num[1000001], rrank[1000001],a[1000001],f[1000001];
-void Add(int x, int d) { for (; x <= n; x += (x & -x)) F[x] = max(F[x], d); }
-int Sub(int x) { int ans = 0; for (; x; x -= (x & -x)) ans = max(F[x], ans); return ans; }
-
-
-int main( )
-{
+int main(){
 	int t;
 	cin>>t;
 	while(t--){
-		memset(F,0,sizeof(F));
-		memset(num,0,sizeof(num));
-		memset(rrank,0,sizeof(rrank));
-		memset(a,0,sizeof(a));
-		memset(f,0,sizeof(f));
-		n=0;
-		pair<int, int> p[1000001];
-		
-		int top = 0, Max = 1;
-		scanf("%d", &n);
-		for (int i = 1; i <= n; i ++)
-		{
-			scanf("%d", &a[i]);
-			p[i].x = a[i] - i, p[i].y = i;
+		int n;
+		cin>>n;
+		int a[n];
+		for(int i = 0; i < n;i++){
+			cin>>a[i];
 		}
-		sort(p + 1, p + 1 + n);
-		rrank[1] = ++ top;
-		for (int i = 2; i <= n; i ++)
-			if (p[i].x != p[i - 1].x) rrank[i] = ++ top;
-		else rrank[i] = top;
-		for (int i = 1; i <= n; i ++)
-			num[p[i].y] = rrank[i];
-		for (int i = 1; i <= n; i ++)
-			if (a[i] >= i)
-			{
-				f[i] = Sub(num[i]) + 1;
-				Add(num[i], f[i]);
-				Max = max(Max, f[i]);
+		vector<ll> v(100001,2000000001);
+		for(int i = 0;i<n;i++){
+			if(a[i]>i){
+				
+				vector<ll>::iterator it = upper_bound(v.begin(),v.end(),a[i]-i);
+				*it = a[i]-i;
 			}
-			printf("%d\n", n - Max);
 		}
-		return 0;
-	} 
+		cout<<n-(find(v.begin(),v.end(),2000000001)-v.begin())<<endl;
+	}
+}
