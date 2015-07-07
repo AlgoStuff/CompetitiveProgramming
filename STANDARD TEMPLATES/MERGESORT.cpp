@@ -49,15 +49,19 @@ void mergesort(int a[],int start,int end){
 
 
 int main(){
-	int n;
-	cin>>n;
-	int a[n];
-	for(int i = 0; i < n;i++){
-		cin>>a[i];
+	int t;
+	cin>>t;
+	while(t--){
+		int n;
+		cin>>n;
+		int a[n];
+		for(int i = 0; i < n;i++){
+			cin>>a[i];
+		}
+		mergesort(a,0,n-1);
+		for(int i = 0; i < n;i++){
+			cout<<a[i]<<" ";
+		}
+		cout<<endl;
 	}
-	mergesort(a,0,n-1);
-	for(int i = 0; i < n;i++){
-		cout<<a[i]<<" ";
-	}
-	cout<<endl;
 }
