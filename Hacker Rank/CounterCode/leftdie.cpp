@@ -4,7 +4,7 @@
 //	Rakesh Mahadasa														
 //	National Institute of Technology , Calicut						
 //	problem link : https://www.hackerrank.com/contests/countercode/challenges/poisonous-plants
-//	Concept : memoization
+//	Concept : Stack
 //	Reference :	None
 //																		
 /***********************************************************************/
@@ -48,76 +48,63 @@ ll gcd(ll a,ll b){
 	return a;
 }
 
-
-int bruteforce(ll a[],int n){
-	int b[100001]={0};
-	int res=0;
-	while(true){
-		int over = 1;
-		res+=1;
-		ll prev = a[0];
-		for(int i = 1; i < n;i++){
-			if (b[i-1]==0) prev = a[i-1];
-			if(a[i]>=prev and b[i]!=1){
-				over = 0;
-				b[i]=1;
-			}
-		}
-		for(int i = 0; i<n;i++){
-			if(b[i]==0)cout<<a[i]<<" ";
-		}
-		cout<<endl;
-		if (over) break;
-	}
-	return res;
-}
-
 int main(){
 	int n;
 	cin>>n;
-	ll a[n];
+	int a[n];
 	for(int i = 0; i < n;i++){
 		cin>>a[i];
 	}
 	int res = 0;
-	ll currmin = a[0]; 
-	int currmax = 0;
-	for(int i = 1; i < n;i++){
-		if(a[i]<a[i-1]){
-			if(a[i]<currmin){
-				currmin = a[i];
-				currmax = 0;
-			}
-			else if (a[i]==currmin){
-				currmax+=1;
-				res = max(currmax,res);
-				currmax=0;
+	int is_dec = 0;
+	stack<pair<int,int> >s;
+	for(int i = 0; i < n;i++){
+		if(s.empty()){
+			cout<<"PUSH : "<<a[i]<<" DAY : "<<0<<endl;
+			s.push(make_pair(a[i],0));
+		}
+		else{
+			pair <int,int> curr_pair = s.top();
+			int curr_elem = curr_pair.first;
+			int curr_cnt = curr_pair.second;
+			if(a[i]<=curr_elem){
+				while(true){
+					if(curr_pair.first<a[i])
+						break;
+					else{
+						
+							curr_cnt = curr_pair.second;
+						
+						cout<<"POP : "<<curr_pair.first<<" DAY : "<<curr_pair.second<<endl;
+						s.pop();
+					}
+					if(s.empty())
+						break;
+					curr_pair = s.top();					
+				}
+				if (s.empty()){
+					cout<<"PUSH : "<<a[i]<<" DAY : "<<0<<endl;
+					s.push(make_pair(a[i],0));
+				}
+				else{
+					cout<<"PUSH : "<<a[i]<<" DAY : "<<curr_cnt+1<<endl;
+					s.push(make_pair(a[i],curr_cnt+1));
+					res=max(res,curr_cnt+1);
+
+				}
 			}
 			else{
-				currmax+=1;
+				is_dec = 0;
+				curr_cnt = curr_pair.second;
+				int next_cnt = curr_cnt;
+				cout<<"PUSH : "<<a[i]<<" DAY : "<<1<<endl;
+				s.push(make_pair(a[i],1));
+				res=max(res,1);
+
 			}
 		}
-		else if(a[i]==a[i-1]){
-			if(a[i]>currmin)currmax+=1;
-			if(a[i]==currmin){
-				currmax+=1;
-				res = max(currmax,res);
-				currmax=0;
-			}
-			if(a[i]<currmin){currmin=a[i];
-				currmax=0;}
-		}
-		res = max(currmax,res);
-	//cout<<currmin<<" "<<currmax<<" "<<res<<endl;
 	}
-	int dec = 0;
-	for(int i = 1; i < n;i++){
-		if(a[i]>=a[i-1]){
-			dec=1;
-			break;
-		}
-	}
-	if(dec==0)cout<<0<<endl;
-	else{cout<<res+1<<endl;}
-//cout<<bruteforce(a,n)<<endl;
+	cout<<res<<endl;
+	return 0;
 }
+
