@@ -3,8 +3,8 @@
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
 //	National Institute of Technology , Calicut						
-//	problem link : 
-//	Concept : 
+//	problem link : https://www.codechef.com/SEPT15/problems/MSTEP
+//	Concept : AdHoc
 //	Reference :	None
 //																		
 /***********************************************************************/
@@ -55,7 +55,24 @@ int main(){
 	int t;
 	scanf("%d",&t);
 	while(t--){
-		
+		int n;
+		cin>>n;
+		int a[501][501];
+		vector < pair < int, int > > v(250001);
+		for(int i = 0 ;i < n;i++){
+			for(int j = 0; j < n;j++){
+				cin>>a[i][j];
+				v[a[i][j]].first = i;
+				v[a[i][j]].second = j;
+			}
+		}
+		int res = 0;
+
+		for(int i = 1; i < n*n; i++){
+			//cout<<v[i].first<<" "<<v[i].second<<endl;
+			res+= ( abs(v[i].first - v[i+1].first) + abs(v[i].second - v[i+1].second));
+		}
+		cout<<res<<endl;
 	}
 	return 0;
 }

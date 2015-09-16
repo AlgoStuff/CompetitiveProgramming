@@ -3,7 +3,7 @@
 //	INFINITUM 					                                    	
 //	Rakesh Mahadasa														
 //	National Institute of Technology , Calicut						
-//	problem link : 
+//	problem link : https://www.codechef.com/SEPT15/problems/DONUTS
 //	Concept : 
 //	Reference :	None
 //																		
@@ -54,8 +54,33 @@ ll gcd(ll a,ll b){
 int main(){
 	int t;
 	scanf("%d",&t);
+	int a[100000];
 	while(t--){
-		
+		ll n,m;
+		scanf("%lld %lld",&n,&m);
+		for(int i = 0; i < m;i++){
+			scanf("%d",&a[i]);
+		}
+		sort(a,a+m);
+		int temp = m-1;
+		int res = 0;
+		for(int i = 0; i < m; i++){
+			temp = temp - a[i];
+			if(temp == 0){
+				res+=a[i];
+				printf("%d\n",res );
+				break;
+			}
+			else if(temp < 0){
+				res+=(a[i]+temp);
+				printf("%d\n",res );
+				break;
+			}
+			else{
+				res+=a[i];
+				temp-=1;
+			}
+		}
 	}
 	return 0;
 }
